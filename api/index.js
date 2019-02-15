@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const router = express.Router()
 
 // Route middleware
-const authenticateRequest = require('./authenticate-request')
+const { authenticateRequest } = require('./utils')
 
 // Route handlers
 const getWorkOrders = require('./get-work-orders')
