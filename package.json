@@ -5,10 +5,60 @@
   "main": "app.js",
   "author": "Mark McKelvy",
   "license": "UNLICENSED",
+  "scripts": {
+    "build:prod": "node ./build/prod/index.js",
+    "build:dev": "node ./build/dev/index.js",
+    "watch:dev": "webpack --config webpack.dev.js --watch --progress",
+    "start:dev": "nodemon server.js",
+    "start:prod": "node server.js"
+  },
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "boom": "^7.3.0",
-    "express": "^4.16.4"
+    "del": "^3.0.0",
+    "express": "^4.16.4",
+    "mini-css-extract-plugin": "^0.5.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "uuid": "^3.3.2",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "last 2 Chrome versions",
+              "last 2 Edge versions",
+              "last 2 Safari versions",
+              "last 2 Firefox versions",
+              "last 2 iOS versions",
+              "last 2 ChromeAndroid versions"
+            ]
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }

@@ -1,0 +1,9 @@
+# Build files
+/assets/js/dist/
+/assets/css/dist/
+
+# External libs and modules
+node_modules/
+
+# Logs
+npm-debug.log
