@@ -14,14 +14,20 @@ import {
 import { spacing, shadows } from 'theme'
 
 export default class Login extends Component {
+  constructor() {
+    super()
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
   /*
   - Make a request to the server w/ email and pass.
   - Receive a token.
   - Save the token to localStorage for subsequent requests.
   - Call the authenticate function.
   */
-  handleSubmit() {
-
+  handleSubmit({ values }) {
+    console.log(values)
   }
 
   render() {
@@ -44,7 +50,13 @@ export default class Login extends Component {
             maxWidth: spacing.base * 24
           }}>
 
-          <Form>
+          <Form
+            onSubmit={this.handleSubmit}
+            initialInputs={{
+              email: '',
+              password: ''
+            }}>
+
             {({ values, handleChange }) => {
               return (
                 <Grid>

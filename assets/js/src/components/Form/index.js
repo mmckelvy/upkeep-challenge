@@ -6,7 +6,7 @@ export default class Form extends Component {
     super(props)
 
     this.state = {
-      values: {},
+      values: props.initialInputs || {},
       errors: {},
     }
 
@@ -49,7 +49,7 @@ export default class Form extends Component {
 
   render() {
     const { style, children: renderFn } = this.props
-    const { values, errors, isInitial, hasReset } = this.state
+    const { values, errors } = this.state
 
     return (
       <form
@@ -74,4 +74,5 @@ Form.propTypes = {
   onSubmit: PropTypes.func,
   validator: PropTypes.func,
   transform: PropTypes.func,
+  initialInputs: PropTypes.object
 }
