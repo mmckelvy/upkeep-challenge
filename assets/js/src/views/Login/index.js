@@ -30,7 +30,7 @@ export default class Login extends Component {
     // In a production app we would sanitize / validate these values
 
     try {
-      const { res } = await fetch('/api/login', {
+      const res = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,9 +45,11 @@ export default class Login extends Component {
 
       } else {
         // Show some error message to the user.
+        console.log(res)
       }
 
     } catch (err) {
+      console.log(err)
       // Show some error message to the user.
     }
   }

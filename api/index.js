@@ -8,6 +8,7 @@ const { authenticateRequest } = require('./utils')
 
 // Route handlers
 const login = require('./login')
+const logout = require('./logout')
 const getWorkOrders = require('./get-work-orders')
 const createWorkOrder = require('./create-work-order')
 
@@ -15,8 +16,9 @@ const createWorkOrder = require('./create-work-order')
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({extended: true}))
 
-// Public route
+// Public routes
 router.post('/login', login)
+router.post('/logout', logout)
 
 // Authenticated routes
 router.use(authenticateRequest)
