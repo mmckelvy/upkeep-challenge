@@ -6,6 +6,9 @@ const path = require('path')
 const express = require('express')
 const Boom = require('boom')
 
+// Local requires
+const api = require('./api')
+
 // Create the express app
 const app = express()
 
@@ -17,7 +20,7 @@ app.disable('x-powered-by')
 app.use('/assets', express.static(path.join(__dirname, './assets')))
 
 // API routes
-// app.use('/api', api)
+app.use('/api', api)
 
 // Serve the frontend
 app.get('*', (req, res) => {
