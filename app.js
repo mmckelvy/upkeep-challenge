@@ -16,7 +16,7 @@ const app = express()
 app.disable('x-powered-by')
 
 // Static file handling
-// In production this should be gzipped
+// Add gzipping
 app.use('/assets', express.static(path.join(__dirname, './assets')))
 
 // API routes
@@ -27,11 +27,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './views/index.html'))
 })
 
-/**
-Main error handler
-
-Sends all non 500 errors back to the client with the appropriate message.  Logs 500 errors and sends a notification.
-*/
+// Main error handler
 app.use((err, req, res, next) => {
   // All Boom errors should be non 5xx (e.g. 400, 401, etc.)
   if (err.isBoom && err.output.statusCode[0] !== 5) {
