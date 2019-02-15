@@ -1,25 +1,33 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { colors, spacing } from 'theme'
+import { colors, spacing, type, font } from 'theme'
 import Hover from '../Hover'
 
 export default class PrimaryButton extends Component {
   render() {
-    const { text } = this.props
+    const { children, style } = this.props
 
     return (
       <Hover>
         {({ hovered, handleEnter, handleLeave }) => {
           return (
             <button
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
               style={{
                 padding: spacing.base,
                 cursor: 'pointer',
                 backgroundColor: hovered
                   ? colors.red700
                   : colors.red900,
-                color: 'white'
+                color: 'white',
+                borderRadius: '2px',
+                fontFamily: font.primaryFont,
+                fontSize: type.small,
+                textTransform: 'uppercase',
+                transition: '250ms background-color ease-in-out',
+                ...style
               }}>
 
               {children}
@@ -33,5 +41,6 @@ export default class PrimaryButton extends Component {
 }
 
 PrimaryButton.propTypes = {
-  text: PropTypes.node
+  children: PropTypes.node,
+  style: PropTypes.object
 }

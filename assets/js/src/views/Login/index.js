@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 
-import { Block, Headline, Form, Input, PrimaryButton } from 'components'
+import {
+  Block,
+  Headline,
+  Form,
+  Input,
+  PrimaryButton,
+  Grid,
+  Row,
+  Col
+} from 'components'
 
 import { spacing, shadows } from 'theme'
 
@@ -32,22 +41,52 @@ export default class Login extends Component {
             margin: `0 auto`,
             padding: spacing.med,
             boxShadow: shadows.shadow1,
-            maxWidth: spacing.base * 32
+            maxWidth: spacing.base * 24
           }}>
 
           <Form>
             {({ values, handleChange }) => {
               return (
-                <Input
-                  width={spacing.base * 20}
-                  name="email"
-                  placeholder="you@email.com"
-                  value={values.email}
-                  onChange={handleChange}
-                />
+                <Grid>
+
+                  <Row>
+                    <Col marginBottom={spacing.med}>
+                      <Input
+                        name="email"
+                        placeholder="you@email.com"
+                        label="Email"
+                        value={values.email}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col marginBottom={spacing.xl}>
+                      <Input
+                        name="password"
+                        placeholder="myStrongPassword"
+                        label="Password"
+                        value={values.password}
+                        onChange={handleChange}
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col marginBottom={0}>
+                      <PrimaryButton
+                        style={{width: '100%'}}>
+
+                        Log in
+                      </PrimaryButton>
+                    </Col>
+                  </Row>
+                </Grid>
               )
             }}
           </Form>
+
         </Block>
       </Block>
     )
