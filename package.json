@@ -5,6 +5,10 @@
   "main": "app.js",
   "author": "Mark McKelvy",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mmckelvy/upkeep-challenge.git"
+  },
   "scripts": {
     "build:prod": "node ./build/prod/index.js",
     "build:dev": "node ./build/dev/index.js",
