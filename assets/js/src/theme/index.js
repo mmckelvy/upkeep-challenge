@@ -1,2 +1,5 @@
 export { default as colors } from './colors'
 export { default as spacing } from './spacing'
+export { default as type } from './type'
+export { default as font } from './font'
+export { default as shadows } from './shadows'

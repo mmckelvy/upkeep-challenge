@@ -38,3 +38,17 @@ button {
   border: none;
   outline: none;
 }
+
+::-webkit-input-placeholder {
+  color: #9fb3c8; /* blueGrey300 */
+  font-style: italic;
+}
+::-moz-placeholder {
+  color: #9fb3c8; /* blueGrey300 */
+  font-style: italic;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+  color: #9fb3c8; /* blueGrey300 */
+}
