@@ -1,3 +1,4 @@
+const Boom = require('boom')
 const { requestAsync: request } = require('./utils')
 
 module.exports = async function getWorkOrders(req, res, next) {
@@ -6,12 +7,17 @@ module.exports = async function getWorkOrders(req, res, next) {
 
     const { response, body } = await request({
       method: 'GET',
-      url: `https://api.onupkeep.com/api/v2/work-orders`,
+      url: 'https://api.onupkeep.com/api/v2/work-orders',
       json: true,
       headers: {
         'Session-Token': token
       }
     })
+
+    // Assume any non 200 response is this server's fault.
+    if (response.statusCode !== 200) {
+      throw Boom.internal()
+    }
 
     res.status(200).json(body)
 
