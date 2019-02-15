@@ -1,0 +1,14 @@
+{
+  "name": "upkeep-challenge",
+  "version": "1.0.0",
+  "description": "Code challenge for UpKeep",
+  "main": "app.js",
+  "author": "Mark McKelvy",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "babel-loader": "^8.0.5",
+    "boom": "^7.3.0",
+    "express": "^4.16.4"
+  }
+}
