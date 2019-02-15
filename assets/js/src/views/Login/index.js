@@ -26,8 +26,30 @@ export default class Login extends Component {
   - Save the token to localStorage for subsequent requests.
   - Call the authenticate function.
   */
-  handleSubmit({ values }) {
-    console.log(values)
+  async handleSubmit({ values }) {
+    // In a production app we would sanitize / validate these values
+
+    try {
+      const { res } = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values)
+      })
+
+      if (res.ok) {
+        const { sessionToken } = await res.json()
+
+        localStorage.setItem('sessionToken', sessionToken)
+
+      } else {
+        // Show some error message to the user.
+      }
+
+    } catch (err) {
+      // Show some error message to the user.
+    }
   }
 
   render() {

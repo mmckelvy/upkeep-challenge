@@ -7,6 +7,7 @@ const router = express.Router()
 const { authenticateRequest } = require('./utils')
 
 // Route handlers
+const login = require('./login')
 const getWorkOrders = require('./get-work-orders')
 const createWorkOrder = require('./create-work-order')
 
@@ -14,7 +15,10 @@ const createWorkOrder = require('./create-work-order')
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({extended: true}))
 
-// Make sure each request has the session token
+// Public route
+router.post('/login', login)
+
+// Authenticated routes
 router.use(authenticateRequest)
 
 // All routes will be prefixed with '/api'

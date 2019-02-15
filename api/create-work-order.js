@@ -5,10 +5,6 @@ module.exports = async function createWorkOrder(req, res, next) {
   try {
     const [ scheme, token ] = req.header('authorization').split(' ')
 
-    /*
-    Potentially do some basic validation
-    */
-
     const { response, body } = await request({
       method: 'POST',
       url: 'https://api.onupkeep.com/api/v2/work-orders',
@@ -18,10 +14,7 @@ module.exports = async function createWorkOrder(req, res, next) {
       }
     })
 
-    // Assume any non 200 response is this server's fault.
-    if (response.statusCode !== 200) {
-      throw Boom.internal()
-    }
+    // Todo: error handling
 
     res.status(200).json(body)
 
