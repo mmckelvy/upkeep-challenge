@@ -4,6 +4,8 @@ import { Route, Redirect, Switch } from 'react-router-dom'
 import { Block, Loader } from 'components'
 import { Home, Login } from 'views'
 
+import './styles.css'
+
 export default class Root extends Component {
   constructor() {
     super()
