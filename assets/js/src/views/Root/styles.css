@@ -8,6 +8,15 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #102a43; /* blueGrey900 */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 /* RESETS */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
