@@ -5,8 +5,6 @@ module.exports = async function logout(req, res, next) {
   try {
     const [ scheme, token ] = req.header('authorization').split(' ')
 
-    console.log(token)
-
     const { response, body } = await request({
       method: 'DELETE',
       url: 'https://api.onupkeep.com/api/v2/auth/',

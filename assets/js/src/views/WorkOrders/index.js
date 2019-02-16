@@ -38,7 +38,7 @@ export default class WorkOrders extends Component {
     }
   }
 
-  async saveWorkOrder({ values }) {
+  async saveWorkOrder({ values, resetForm }) {
     try {
       const { dueDate, ...rest } = values
       const ms = moment(dueDate, 'YYYY-MM-DD').valueOf()
@@ -61,6 +61,7 @@ export default class WorkOrders extends Component {
         })
 
         this.hideCreateWorkOrder()
+        resetForm()
       }
 
     } catch (err) {

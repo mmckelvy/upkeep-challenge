@@ -46,7 +46,7 @@ export default class List extends Component {
           {workOrders.map((workOrder, i) => {
             const { title, description, priority, dueDate } = workOrder
             const displayDate = moment(dueDate, moment.ISO_8601)
-              .calendar()
+              .format('YYYY-MM-DD')
 
             return (
               <Row

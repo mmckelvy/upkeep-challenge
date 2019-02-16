@@ -13,6 +13,7 @@ export default class Form extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.submitForm = this.submitForm.bind(this)
+    this.resetForm = this.resetForm.bind(this)
   }
 
   handleChange(e) {
@@ -22,6 +23,23 @@ export default class Form extends Component {
         ...{[e.target.name]: e.target.value}
       }
     })
+  }
+
+  resetForm() {
+    if (this.props.initialInputs) {
+      this.setState({
+        values: this.props.initialInputs,
+        errors: {},
+        hasReset: true
+      })
+
+    } else {
+      this.setState({
+        values: {},
+        errors: {},
+        hasReset: true
+      })
+    }
   }
 
   submitForm() {
