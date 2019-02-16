@@ -18,17 +18,24 @@ Then run:
 
     npm run start:prod
 
+Navigate your browser to:
+
+    localhost:3000
 
 That's it!
 
 ## Build and run in development mode
 Development mode watches files and recompiles the backend and frontend when anything changes.  It also does not minify or gzip the code.  **For purposes of checking the exercise, you do NOT need to run the app in dev mode.**
 
-Build:
+Cleanup the prod frontend files:
+
+    npm run build:dev
+
+Build & watch the frontend:
 
     npm run watch:dev
 
-Start:
+Start (do this in a separate terminal tab):
 
     npm run start:dev
 
