@@ -7,6 +7,7 @@ const express = require('express')
 const Boom = require('boom')
 
 // Local requires
+const serveCompressed = require('./utils/serve-compressed')
 const api = require('./api')
 
 // Create the express app
@@ -16,7 +17,7 @@ const app = express()
 app.disable('x-powered-by')
 
 // Static file handling
-// Add gzipping
+app.use(serveCompressed())
 app.use('/assets', express.static(path.join(__dirname, './assets')))
 
 // API routes
