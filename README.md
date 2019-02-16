@@ -18,8 +18,11 @@ Then run:
 
     npm run start:prod
 
+
+That's it!
+
 ## Build and run in development mode
-Development mode watches files and recompiles the backend and frontends when anything changes.  It also does not minify or gzip the code.  **For purposes of checking the exercise, you do NOT need to run the app in dev mode.**
+Development mode watches files and recompiles the backend and frontend when anything changes.  It also does not minify or gzip the code.  **For purposes of checking the exercise, you do NOT need to run the app in dev mode.**
 
 Build:
 
