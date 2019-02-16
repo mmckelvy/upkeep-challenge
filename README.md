@@ -2,8 +2,11 @@
 
 ## Installation & Setup
 Make sure you have [Node.js](https://nodejs.org/en/download/) installed.
+
 Clone the repo.
+
 From the repo's working directory, run:
+
 
     npm install
 
