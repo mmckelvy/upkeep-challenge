@@ -81,7 +81,7 @@ export default class CreateWorkOrder extends Component {
                 </Row>
 
                 <Row>
-                  <Col>
+                  <Col marginBottom={spacing.xl}>
                     <Input
                       width="100%"
                       name="priority"
@@ -91,9 +91,7 @@ export default class CreateWorkOrder extends Component {
                       placeholder="0, 1, 2, or 3"
                     />
                   </Col>
-                </Row>
 
-                <Row>
                   <Col marginBottom={spacing.xl}>
                     <Input
                       width="100%"
