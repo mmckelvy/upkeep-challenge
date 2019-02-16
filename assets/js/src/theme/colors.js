@@ -3,6 +3,7 @@ export default {
   blueGrey900: '#102a43',
   blueGrey500: '#627d98',
   blueGrey300: '#9fb3c8',
+  blueGrey100: '#bcccdc',
 
   // Primary
   red900: '#ff273a',
