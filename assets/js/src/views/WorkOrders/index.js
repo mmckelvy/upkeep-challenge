@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 import { Link } from 'react-router-dom'
 
@@ -17,6 +18,7 @@ export default class WorkOrders extends Component {
       workOrders: []
     }
 
+    this.saveWorkOrder = this.saveWorkOrder.bind(this)
     this.showCreateWorkOrder = this.showCreateWorkOrder.bind(this)
     this.hideCreateWorkOrder = this.hideCreateWorkOrder.bind(this)
   }
@@ -36,8 +38,32 @@ export default class WorkOrders extends Component {
     }
   }
 
-  async saveWorkOrder() {
-    // Save down a new order
+  async saveWorkOrder({ values }) {
+    try {
+      const { dueDate, ...rest } = values
+      const ms = moment(dueDate, 'YYYY-MM-DD').valueOf()
+
+      const res = await fetch(`/api/create-work-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('sessionToken')}`
+        },
+        body: JSON.stringify({dueDate: ms, ...rest})
+      })
+
+      if (res.ok) {
+        const { workOrder } = await res.json()
+
+        // Add the saved resource to the list.
+        this.setState({
+          workOrders: [workOrder, ...this.state.workOrders]
+        })
+      }
+
+    } catch (err) {
+      // Some error handling
+    }
   }
 
   showCreateWorkOrder() {
@@ -81,6 +107,7 @@ export default class WorkOrders extends Component {
         </Block>
 
         <CreateWorkOrder
+          saveWorkOrder={this.saveWorkOrder}
           creatingWorkOrder={creatingWorkOrder}
           hideCreateWorkOrder={this.hideCreateWorkOrder}
         />

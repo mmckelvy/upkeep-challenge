@@ -48,7 +48,7 @@ export default class Input extends Component {
     const { focused } = this.state
     const activeColor = focused
       ? colors.blue800
-      : colors.blueGrey500
+      : colors.blueGrey300
 
     const appliedInputStyles = {
       display: 'block',

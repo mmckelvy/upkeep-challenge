@@ -14,9 +14,7 @@ module.exports = async function createWorkOrder(req, res, next) {
       }
     })
 
-    // Todo: error handling
-
-    res.status(200).json(body)
+    res.status(200).json({workOrder: body.result})
 
   } catch (err) {
     // Pass the error to the main error handler

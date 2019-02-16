@@ -15,7 +15,7 @@ import { spacing, shadows, type } from 'theme'
 
 export default class CreateWorkOrder extends Component {
   render() {
-    const { creatingWorkOrder, hideCreateWorkOrder } = this.props
+    const { creatingWorkOrder, hideCreateWorkOrder, saveWorkOrder } = this.props
     const xPos = creatingWorkOrder ? 0 : spacing.base * 25
 
     return (
@@ -36,7 +36,15 @@ export default class CreateWorkOrder extends Component {
           overflowY: 'auto',
         }}>
 
-        <Form>
+        <Form
+          onSubmit={saveWorkOrder}
+          initialInputs={{
+            title: '',
+            description: '',
+            priority: '',
+            dueDate: ''
+          }}>
+
           {({ values, handleChange }) => {
             return (
               <Grid
@@ -113,6 +121,7 @@ export default class CreateWorkOrder extends Component {
 
                     <SecondaryButton
                       type="button"
+                      onClick={hideCreateWorkOrder}
                       style={{marginRight: spacing.med}}>
 
                       Cancel
@@ -134,6 +143,7 @@ export default class CreateWorkOrder extends Component {
 }
 
 CreateWorkOrder.propTypes = {
+  saveWorkOrder: PropTypes.func,
   creatingWorkOrder: PropTypes.bool,
   hideCreateWorkOrder: PropTypes.func
 }

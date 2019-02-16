@@ -16,9 +16,6 @@ module.exports = async function logout(req, res, next) {
       }
     })
 
-    console.log(response.statusCode)
-    // Todo: error handling
-
     res.status(200).end()
 
   } catch (err) {

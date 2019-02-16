@@ -10,10 +10,6 @@ module.exports = async function login(req, res, next) {
       json: req.body,
     })
 
-    console.log(body)
-
-    // Todo: error handling
-
     res.status(200).json(body.result)
 
   } catch (err) {
