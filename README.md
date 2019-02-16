@@ -35,6 +35,8 @@ Start:
 ## Style overview
 I prefer to build my UIs with components, and I try to keep styles encapsulated at the component level via inline styles written in JavaScript.  This avoids many of the pitfalls of traditional CSS (e.g. global variables) and gives you the power of a proper programming language for styling.
 
-In addition to component level styles, I generally build out a design system with core typography, spacing, colors, and shadows expressed as JavaScript variables (see `/assets/js/src/theme`).  This keeps design consistent and allows for a faster iteration.
+In addition to component level styles, I generally build out a design system with core typography, spacing, colors, and shadows expressed as JavaScript variables (see `/assets/js/src/theme`).  This keeps design consistent and allows for faster iteration.
 
 Finally, I do use traditional CSS where styles need to be applied globally.  I generally co-locate these styles with the appropriate component (see `/assets/js/src/views/Root`) for development convenience and extract them to a separate file via webpack.
+
+Note that I am comfortable using traditional CSS systems (Less, Sass) and some of the newer flavors of styling approaches such as CSS-in-JS if necessary.
