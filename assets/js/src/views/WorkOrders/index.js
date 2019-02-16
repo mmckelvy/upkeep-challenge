@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Link } from 'react-router-dom'
 
-import { Block, Grid, Row, Col, PrimaryButton } from 'components'
+import { Block, Grid, Row, Col, PrimaryButton, ClickAway } from 'components'
 import { colors, spacing } from 'theme'
 
 import List from './List'
@@ -18,6 +18,7 @@ export default class WorkOrders extends Component {
     }
 
     this.showCreateWorkOrder = this.showCreateWorkOrder.bind(this)
+    this.hideCreateWorkOrder = this.hideCreateWorkOrder.bind(this)
   }
 
   async fetchWorkOrders() {
@@ -45,6 +46,12 @@ export default class WorkOrders extends Component {
     })
   }
 
+  hideCreateWorkOrder() {
+    this.setState({
+      creatingWorkOrder: false
+    })
+  }
+
   componentDidMount() {
     this.fetchWorkOrders()
   }
@@ -65,18 +72,24 @@ export default class WorkOrders extends Component {
             marginBottom: spacing.med
           }}>
 
-          {!creatingWorkOrder &&
             <PrimaryButton
               type="button"
               onClick={this.showCreateWorkOrder}>
 
               + Create New Order
             </PrimaryButton>
-          }
         </Block>
 
+        <CreateWorkOrder
+          creatingWorkOrder={creatingWorkOrder}
+          hideCreateWorkOrder={this.hideCreateWorkOrder}
+        />
+
         {creatingWorkOrder &&
-          <CreateWorkOrder saveWorkOrder={this.saveWorkOrder} />
+          <ClickAway
+            zIndex={1}
+            onClick={this.hideCreateWorkOrder}
+          />
         }
 
         <List workOrders={workOrders} />

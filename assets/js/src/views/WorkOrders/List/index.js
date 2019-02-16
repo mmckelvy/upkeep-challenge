@@ -42,6 +42,7 @@ export default class List extends Component {
             </HeaderCell>
           </Row>
 
+          {/* Main body row */}
           {workOrders.map((workOrder, i) => {
             const { title, description, priority, dueDate } = workOrder
             const displayDate = moment(dueDate, moment.ISO_8601)

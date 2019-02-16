@@ -14,6 +14,7 @@ export { default as PrimaryButton } from './PrimaryButton'
 
 // Helpers
 export { default as Hover } from './Hover'
+export { default as ClickAway } from './ClickAway'
 
 // Type
 export { default as Headline } from './Headline'

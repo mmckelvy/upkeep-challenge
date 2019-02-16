@@ -45,11 +45,9 @@ export default class Login extends Component {
 
       } else {
         // Show some error message to the user.
-        console.log(res)
       }
 
     } catch (err) {
-      console.log(err)
       // Show some error message to the user.
     }
   }
