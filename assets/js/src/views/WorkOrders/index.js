@@ -59,6 +59,8 @@ export default class WorkOrders extends Component {
         this.setState({
           workOrders: [workOrder, ...this.state.workOrders]
         })
+
+        this.hideCreateWorkOrder()
       }
 
     } catch (err) {

@@ -2,9 +2,9 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 
 export default class Logout extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { history, logout } = this.props
-    logout()
+    await logout()
     history.push('/login')
   }
 
