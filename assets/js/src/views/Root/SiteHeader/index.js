@@ -16,6 +16,7 @@ export default class SiteHeader extends Component {
           display: 'flex',
           justifyContent: 'flex-end',
           padding: `${spacing.med}px ${spacing.med}px ${spacing.med}px 0`,
+          marginBottom: spacing.xl
         }}>
 
         {isAuthenticated

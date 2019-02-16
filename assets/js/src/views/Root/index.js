@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
 
 import { Block, Loader } from 'components'
-import { Home, Login, Logout } from 'views'
+import { WorkOrders, Login, Logout } from 'views'
 
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
@@ -104,7 +104,7 @@ export default class Root extends Component {
         }} />
 
         {/* Main content */}
-        <Block>
+        <Block style={{flex: '1 1 auto'}}>
 
           <Switch>
             <Route path="/login" render={(props) => {
@@ -141,7 +141,7 @@ export default class Root extends Component {
               }
 
               if (isAuthenticated) {
-                return <Home />
+                return <WorkOrders />
               }
 
               return <Redirect to="/login" />

@@ -6,7 +6,7 @@ import Hover from '../Hover'
 
 export default class PrimaryButton extends Component {
   render() {
-    const { children, style } = this.props
+    const { children, style, ...rest } = this.props
 
     return (
       <Hover>
@@ -28,7 +28,8 @@ export default class PrimaryButton extends Component {
                 textTransform: 'uppercase',
                 transition: '250ms background-color ease-in-out',
                 ...style
-              }}>
+              }}
+              {...rest}>
 
               {children}
             </button>

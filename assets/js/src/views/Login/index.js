@@ -63,7 +63,7 @@ export default class Login extends Component {
             marginBottom: spacing.med
           }}>
 
-          Welcome to UpKeep! Please login below.
+          UpKeep Maintenance
         </Headline>
 
         <Block
