@@ -50,6 +50,19 @@ export default class Input extends Component {
       ? colors.blue800
       : colors.blueGrey500
 
+    const appliedInputStyles = {
+      display: 'block',
+      outline: 'none',
+      fontSize: type.small,
+      fontFamily: font.primaryFont,
+      border: `1px solid ${activeColor}`,
+      borderRadius: '2px',
+      width: '100%',
+      padding: `8px`,
+      transition: 'border 250ms ease-in-out',
+      ...inputStyle
+    }
+
     return (
       <Block
         style={{
@@ -70,17 +83,7 @@ export default class Input extends Component {
 
         {!multiLine &&
           <input
-            style={{
-              display: 'block',
-              outline: 'none',
-              fontSize: type.small,
-              fontFamily: font.primaryFont,
-              border: `1px solid ${activeColor}`,
-              borderRadius: '2px',
-              width: '100%',
-              padding: `8px`,
-              transition: 'border 250ms ease-in-out',
-            }}
+            style={appliedInputStyles}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             ref={input => this.input = input}
@@ -90,10 +93,9 @@ export default class Input extends Component {
 
         {multiLine &&
           <textarea
-            style={appliedStyles.input}
+            style={appliedInputStyles}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
-            disabled={disabled}
             ref={input => this.input = input}
             {...rest}
           />

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { colors, spacing, type, font } from 'theme'
 import Hover from '../Hover'
 
-export default class PrimaryButton extends Component {
+export default class SecondaryButton extends Component {
   render() {
     const { children, style, ...rest } = this.props
 
@@ -20,9 +20,8 @@ export default class PrimaryButton extends Component {
                 padding: spacing.base,
                 cursor: 'pointer',
                 backgroundColor: hovered
-                  ? colors.red700
-                  : colors.red900,
-                color: 'white',
+                  ? colors.blueGrey300
+                  : 'white',
                 borderRadius: '2px',
                 fontFamily: font.primaryFont,
                 fontSize: type.small,
@@ -42,7 +41,7 @@ export default class PrimaryButton extends Component {
   }
 }
 
-PrimaryButton.propTypes = {
+SecondaryButton.propTypes = {
   children: PropTypes.node,
   style: PropTypes.object
 }
