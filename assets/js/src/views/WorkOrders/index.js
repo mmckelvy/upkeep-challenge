@@ -21,7 +21,18 @@ export default class WorkOrders extends Component {
   }
 
   async fetchWorkOrders() {
-    // Some fetching here
+    const res = await fetch('/api/get-work-orders', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('sessionToken')}`
+      }
+    })
+
+    if (res.ok) {
+      const { workOrders } = await res.json()
+
+      this.setState({workOrders})
+    }
   }
 
   async saveWorkOrder() {
@@ -32,6 +43,10 @@ export default class WorkOrders extends Component {
     this.setState({
       creatingWorkOrder: true
     })
+  }
+
+  componentDidMount() {
+    this.fetchWorkOrders()
   }
 
   render() {

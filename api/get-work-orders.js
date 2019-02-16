@@ -19,7 +19,9 @@ module.exports = async function getWorkOrders(req, res, next) {
       throw Boom.internal()
     }
 
-    res.status(200).json(body)
+    console.log(body)
+
+    res.status(200).json({workOrders: body.results})
 
   } catch (err) {
     // Pass the error to the main error handler
