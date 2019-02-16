@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 import { Block, Grid, Row, Col } from 'components'
 import { colors, spacing, type } from 'theme'
+
+import HeaderCell from './HeaderCell'
+import BodyCell from './BodyCell'
 
 export default class List extends Component {
   render() {
@@ -11,6 +15,7 @@ export default class List extends Component {
     return (
       <Block>
         <Grid
+          noMobileWrap
           padding={12}>
 
           {/* Header row */}
@@ -20,45 +25,27 @@ export default class List extends Component {
               fontSize: type.small
             }}>
 
-            <Col
-              style={{
-                borderBottom: `1px solid ${colors.blueGrey500}`,
-                padding: spacing.small
-              }}>
-
+            <HeaderCell>
               Title
-            </Col>
+            </HeaderCell>
 
-            <Col
-              style={{
-                borderBottom: `1px solid ${colors.blueGrey500}`,
-                padding: spacing.small
-              }}>
-
+            <HeaderCell>
               Description
-            </Col>
+            </HeaderCell>
 
-            <Col
-              style={{
-                borderBottom: `1px solid ${colors.blueGrey500}`,
-                padding: spacing.small
-              }}>
-
+            <HeaderCell>
               Priority
-            </Col>
+            </HeaderCell>
 
-            <Col
-              style={{
-                borderBottom: `1px solid ${colors.blueGrey500}`,
-                padding: spacing.small
-              }}>
-
-              Due date
-            </Col>
+            <HeaderCell>
+              Due Date
+            </HeaderCell>
           </Row>
 
           {workOrders.map((workOrder, i) => {
             const { title, description, priority, dueDate } = workOrder
+            const displayDate = moment(dueDate, moment.ISO_8601)
+              .calendar()
 
             return (
               <Row
@@ -67,41 +54,21 @@ export default class List extends Component {
                   fontSize: type.small
                 }}>
 
-                <Col
-                  style={{
-                    borderBottom: `1px solid ${colors.blueGrey300}`,
-                    padding: spacing.small
-                  }}>
-
+                <BodyCell>
                   {title}
-                </Col>
+                </BodyCell>
 
-                <Col
-                  style={{
-                    borderBottom: `1px solid ${colors.blueGrey300}`,
-                    padding: spacing.small
-                  }}>
-
+                <BodyCell>
                   {description}
-                </Col>
+                </BodyCell>
 
-                <Col
-                  style={{
-                    borderBottom: `1px solid ${colors.blueGrey300}`,
-                    padding: spacing.small
-                  }}>
-
+                <BodyCell>
                   {priority}
-                </Col>
+                </BodyCell>
 
-                <Col
-                  style={{
-                    borderBottom: `1px solid ${colors.blueGrey300}`,
-                    padding: spacing.small
-                  }}>
-
-                  {dueDate}
-                </Col>
+                <BodyCell>
+                  {displayDate}
+                </BodyCell>
               </Row>
             )
           })}
