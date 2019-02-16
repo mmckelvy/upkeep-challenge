@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
 
 import { Block, Loader } from 'components'
-import { Home, Login } from 'views'
+import { Home, Login, Logout } from 'views'
 
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
@@ -32,11 +32,30 @@ export default class Root extends Component {
     })
   }
 
-  logout() {
-    localStorage.removeItem('sessionToken')
-    this.setState({
-      isAuthenticated: false
-    })
+  async logout() {
+    try {
+      const res = await fetch('/api/logout', {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('sessionToken')}`
+        }
+      })
+
+      if (res.ok) {
+        localStorage.removeItem('sessionToken')
+
+        this.setState({
+          isAuthenticated: false
+        })
+
+      // some error message
+      } else {
+
+      }
+
+    } catch (err) {
+      // some error message
+    }
   }
 
   async verifySessionToken() {
@@ -76,7 +95,11 @@ export default class Root extends Component {
         {/* SiteHeader renders no matter what */}
         <Route path="/" render={(props) => {
           return (
-            <SiteHeader logout={this.logout} {...props} />
+            <SiteHeader
+              isAuthenticated={isAuthenticated}
+              logout={this.logout}
+              {...props}
+            />
           )
         }} />
 
@@ -84,7 +107,7 @@ export default class Root extends Component {
         <Block>
 
           <Switch>
-            <Route path="/login" render={() => {
+            <Route path="/login" render={(props) => {
               if (checkingAuth) {
                 return <Loader msg="Checking your credentials..." />
               }
@@ -93,7 +116,21 @@ export default class Root extends Component {
                 return <Redirect to="/" />
               }
 
-              return <Login />
+              return (
+                <Login
+                  authenticate={this.authenticate}
+                  {...props}
+                />
+              )
+            }} />
+
+            <Route path="/logout" render={({ history }) => {
+              return (
+                <Logout
+                  history={history}
+                  logout={this.logout}
+                />
+              )
             }} />
 
 

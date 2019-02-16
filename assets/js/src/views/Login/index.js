@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import {
   Block,
@@ -20,13 +21,8 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  /*
-  - Make a request to the server w/ email and pass.
-  - Receive a token.
-  - Save the token to localStorage for subsequent requests.
-  - Call the authenticate function.
-  */
   async handleSubmit({ values }) {
+    const { history, authenticate } = this.props
     // In a production app we would sanitize / validate these values
 
     try {
@@ -42,6 +38,10 @@ export default class Login extends Component {
         const { sessionToken } = await res.json()
 
         localStorage.setItem('sessionToken', sessionToken)
+        authenticate()
+
+        // Redirect to the home page.
+        setTimeout(() => history.push('/'), 1000)
 
       } else {
         // Show some error message to the user.
@@ -127,4 +127,8 @@ export default class Login extends Component {
       </Block>
     )
   }
+}
+
+Login.propTypes = {
+  history: PropTypes.object, // Injected by RR
 }

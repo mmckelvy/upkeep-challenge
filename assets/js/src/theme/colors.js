@@ -9,5 +9,6 @@ export default {
   red700: '#ff95a0',
 
   // Secondary
-  blue800: '#3579cc'
+  blue800: '#3579cc',
+  blue300: '#afd1f1',
 }

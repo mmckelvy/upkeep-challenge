@@ -18,7 +18,7 @@ router.use(bodyParser.urlencoded({extended: true}))
 
 // Public routes
 router.post('/login', login)
-router.post('/logout', logout)
+router.delete('/logout', logout)
 
 // Authenticated routes
 router.use(authenticateRequest)
